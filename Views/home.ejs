@@ -3,19 +3,50 @@
 fichier html ou je peux mettre du balisage ou ce sera du JS
 -->
 
-<html>
-    <head>
-        <title> Le projet de Zakaria </title>
-        <%= name %> 
-        <link rel="stylesheet" href="/css/style.css">
+<%- include("header") -%>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Le projet de Zakariaaa</title>
+</head>
 
-    </head>
-    <body>
-        
-    </body>
-</html>
 
+<body>
+
+
+    <section class="accueil" id="accueil">
+
+        <div class="container acc1">
+          
+            <div class="row">
+              <div class="col-xl-12">
+                
+                <p style="text-align: center; "> Nous vous fournissons électricité et gaz naturel et vous assistons pour optimiser votre contrat, à sécuriser et diminuer votre consommation, à produire de l'énergie verte et à rouler durable.</p>
+    
+                <p style="text-align: center;">Choisissez de <strong>l’énergie verte</strong> 100%, sans coûts <strong>supplémentaires</strong>.
+                </p>
+            </div>
+          </div>
+        </div>
+    
+        <center><a type="button" class="btn btn-primary" href="#about">En savoir plus</a></center>
+    
+      </section>
 
 <% for(let i = 0 ; i < 3 ; i++)  { %>
     <p>ejs is easy</p>
 <% } %>
+
+
+<a href="/addExercice"> Lien vers la page ou l'on pourra ajouter un exo</a> <br>
+
+<a href="/exerciceList"> Lien ou se trouvera la liste des exercices </a> <br>
+<a href="/entrainement"> Lien on l'on pourra créer des entrainements </a> <br>
+
+</body>
+
+ </html>

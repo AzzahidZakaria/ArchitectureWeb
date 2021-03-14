@@ -4,6 +4,21 @@ let express = require('express');
 // Initialize the app
 let app = express();
 
+let connection = require('./db.js');
+
+// var mysql = require("mysql");
+// //Database connection
+// var connection = mysql.createConnection({
+
+//     host : 'localhost',
+//     user : 'root',
+//     password : 'root',
+//     database : 'exercices'
+// });
+
+// connection.connect(function(error) { if (error) console.log (error);});
+
+
 // app.use(express.urlencoded((extended: True )));
 
 app.use(express.urlencoded());
@@ -12,11 +27,12 @@ app.use(express.urlencoded());
 //  app.get('/', (req, res) => res.send('Hello World !'));
 
 //Setting Middleware
-//je dis que Public est le dossie contenant les fichier statiques
+//je dis que Public est le dossier contenant les fichier statiques
 app.use(express.static("Public"));
 
 //importe l'objet router pour pouvoir rediriger vers le fichier /routes contenant toutes mes routes
 let router = require('./routes');
+//associe le fichier des routes à l'app, qui estl'instance d'express
 app.use('/', router);
 
 // Setup server port

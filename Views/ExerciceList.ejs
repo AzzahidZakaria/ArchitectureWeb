@@ -1,0 +1,28 @@
+<%- include("header") -%>
+
+<h1>Liste des Exercices</h1>
+
+<ul>
+    <% for( let i = 0; i < exercices.length; i++) { %> 
+        <li> 
+            <%= exercices[i].nomExercice%>  
+            <%= exercices[i].difficulty%> 
+            <%= exercices[i].reps%> 
+            <%= exercices[i].description%> 
+            <%= exercices[i].categorieNom%> 
+
+
+            <a class="btn btn-warning" href="/exerciceList/Show/<%= exercices[i].idexercice %> "> Modifier </a>
+            <a class="btn btn-danger" href="/exerciceList/Remove/<%= exercices[i].idexercice %> "> Effacer </a>
+
+        </li>
+
+
+        <% } %> 
+</ul>
+
+<br>
+
+
+<a href="/addExercice"> Ajoutez un entrainement </a> <br>
+<a href="/entrainement"> Aller vers les entrainements </a>

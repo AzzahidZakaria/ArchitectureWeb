@@ -1,0 +1,42 @@
+<%- include("header") -%>
+
+    <h1> Modifiez un Exercice</h1>
+
+    <form action="/exerciceList/Update/<%= exercice.idexercice  %>" method="POST">
+        <label for="nomExercice">Exercice :</label>
+
+        <input type="text" id="nomExercice" name="nomExercice" value="<%= exercice.nomExercice  %>" /> <br>
+
+
+        <input type="hidden" name="idexercice" value="<%= exercice.idexercice  %>" />
+        <label for="Difficulté de l'exercice">Difficulté de l'exercice : </label>
+        <input type="text" name="difficulty" value="<%= exercice.difficulty %>" /> <br>
+        <label for="Difficulté de l'exercice"> Nombre de répétion : </label>
+        <input type="number" name="reps" value="<%= exercice.reps %>" /> <br>
+
+        <label for="description"> description : </label>
+
+        <textarea name="description" id="description" cols="30" rows="10"
+            value="<%= exercice.description  %>"> <%= exercice.description  %></textarea> <br>
+
+            <label for="categorie">Catégorie :</label>
+        <select name="categorie">
+            <% for (let i=0 ; i < categorieList.length ; i++) { %>
+                <option value="<%= categorieList[i].idCategorie%>">
+                    <%= categorieList[i].categorieNom%>
+                </option>
+                <% } %>
+        </select> <br>
+
+        <input type="submit" value="Sauver" />
+
+        <!-- <input type="submit" value="retour à la liste" formaction="/todo" /> -->
+
+    </form>
+
+
+    <form action="/exerciceList" method="GET">
+
+        <input type="submit" value="retour à la liste" formaction="/exerciceList" />
+
+    </form>
