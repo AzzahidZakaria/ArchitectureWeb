@@ -9,6 +9,53 @@
     </head>
     <body>
         <title>Ici seront listés les entrainements</title>
+
+
+        <ul>
+            <% for( let i=0; i < ExerciceListTest.length; i++) { %>
+                <li>
+    
+                    <div class="card" style="width: 18rem;">
+    
+                        <div class="card-body">
+                            
+                            <h5 class="card-title">
+                                Entrainement : 
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                               
+                            </h6>
+    
+                            
+                            
+                            <div class="card-body">
+                                
+                                <p class="card-text"> Description : <br>  </p>
+                                
+                              </div>
+    
+                            <div class="card-footer text-muted">
+                              Temps de repos :  
+                              </div>
+                            <a class="btn btn-warning" href="/exerciceList/Show/ "> Modifier
+                            </a>
+                            <a class="btn btn-danger" href="/exerciceList/Remove/ "> Effacer
+                            </a>
+                        </div>
+                    </div>
+    
+                    <br>
+                    
+    
+    
+                                        
+    
+                </li>
+    
+    
+                <% } %>
+        </ul>
+    
         
     </body>
 </html>

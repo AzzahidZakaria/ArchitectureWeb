@@ -36,28 +36,6 @@ exports.addExercice = function (req, res) {
 
 
 
-
-exports.entrainement = function (req, response) {
-    connection.query("select * from ( entrainement_exercice join entrainement on entrainement.identrainement = entrainement_exercice.entrainement_ID ) join " + 
-       " exercice on entrainement_exercice.exercice_ID = exercice.idexercice "   , function (error, resultSQL) {
-        if (error) {
-            response.status(400).send(error);
-        }
-        else {
-            response.status(200);
-            exerciceList = resultSQL;
-            console.log(resultSQL);
-            response.json(resultSQL);
-        }   
-
-        });
-
-    // console.log();
-
-    // res.render('Entrainement.ejs', { name: Test, ExerciceListTest: ExerciceListTest })
-};
-
-
 exports.exerciceList = function (request, response) {
 
     connection.query("select * from exercice join categorie on exercice.categorie_ID = categorie.idCategorie ORDER BY idexercice ", function (error, resultSQL) {
@@ -155,5 +133,40 @@ exports.exerciceListRemove = function (request, response) {
             response.redirect('/exerciceList');
         }
     });
+
+};
+
+
+// route qui envoi la liste des entrainemnts
+
+exports.entrainement = function (req, response) {
+    connection.query("select * from ( entrainement_exercice join entrainement on entrainement.identrainement = entrainement_exercice.entrainement_ID ) join " + 
+       " exercice on entrainement_exercice.exercice_ID = exercice.idexercice "   , function (error, resultSQL) {
+        if (error) {
+            response.status(400).send(error);
+        }
+        else {
+            response.status(200);
+            exerciceList = resultSQL;
+            console.log(resultSQL);
+            response.render('Entrainement.ejs', { name: Test, ExerciceListTest: ExerciceListTest })
+        }   
+
+        });
+
+    // console.log();
+
+    // res.render('Entrainement.ejs', { name: Test, ExerciceListTest: ExerciceListTest })
+};
+
+
+
+// route qui va renvoyer une vue pour ajouter un entrainement
+
+exports.AddEntrainement = function (request, response) { 
+
+
+    response.render('AddEntrainement.ejs', { name: Test, ExerciceListTest: ExerciceListTest })
+
 
 };

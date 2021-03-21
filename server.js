@@ -27,7 +27,7 @@ app.use(express.urlencoded());
 //  app.get('/', (req, res) => res.send('Hello World !'));
 
 //Setting Middleware
-//je dis que Public est le dossier contenant les fichier statiques
+//je dis que Public est le dossier contenant les fichiers statiques
 app.use(express.static("Public"));
 
 //importe l'objet router pour pouvoir rediriger vers le fichier /routes contenant toutes mes routes

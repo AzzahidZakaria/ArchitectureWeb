@@ -1,28 +1,62 @@
 <%- include("header") -%>
 
-<h1>Liste des Exercices</h1>
+    <h1>Liste des Exercices</h1>
 
-<ul>
-    <% for( let i = 0; i < exercices.length; i++) { %> 
-        <li> 
-            <%= exercices[i].nomExercice%>  
-            <%= exercices[i].difficulty%> 
-            <%= exercices[i].reps%> 
-            <%= exercices[i].description%> 
-            <%= exercices[i].categorieNom%> 
+    
+    <a href="/addExercice" class="badge badge-success">Ajoutez un exercice</a>
+    <a href="/entrainement" class="badge badge-primary">Aller vers les entrainements</a> <br> <br>
+    
+
+    <ul>
+        <% for( let i=0; i < exercices.length; i++) { %>
+            <li>
+
+                <div class="card" style="width: 18rem;">
+
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">
+                            <%= exercices[i].nomExercice%>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <%= exercices[i].categorieNom%>
+                        </h6>
+
+                        <p class="card-text">
+                           Difficulté :  <%= exercices[i].difficulty%>
+                        </p>
+                        
+                        <div class="card-body">
+                            
+                            <p class="card-text"> Description : <br> <%= exercices[i].description%> </p>
+                            
+                          </div>
+
+                        <div class="card-footer text-muted">
+                           Nombre de répétitons :  <%= exercices[i].reps%>
+                          </div>
+                        <a class="btn btn-warning" href="/exerciceList/Show/<%= exercices[i].idexercice %> "> Modifier
+                        </a>
+                        <a class="btn btn-danger" href="/exerciceList/Remove/<%= exercices[i].idexercice %> "> Effacer
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+                
 
 
-            <a class="btn btn-warning" href="/exerciceList/Show/<%= exercices[i].idexercice %> "> Modifier </a>
-            <a class="btn btn-danger" href="/exerciceList/Remove/<%= exercices[i].idexercice %> "> Effacer </a>
+                                    
 
-        </li>
-
-
-        <% } %> 
-</ul>
-
-<br>
+            </li>
 
 
-<a href="/addExercice"> Ajoutez un entrainement </a> <br>
-<a href="/entrainement"> Aller vers les entrainements </a>
+            <% } %>
+    </ul>
+
+    <br>
+
+
+
+
+    <%- include("footer") -%>
