@@ -1,8 +1,9 @@
 
 const Exercice = require('../Models/Exercice');
+const Entrainements = require('../Models/Entrainements');
 
 let Test = "Zakaria";
-let ExerciceListTest = [" push- up", "développé couché"];
+let entrainementList = [];
 let connection = require('../db');
 let exerciceList = [];
 
@@ -81,21 +82,19 @@ exports.exerciceListUpdateShow = function (request, response) {
             console.log(resultSQL);
             categorieList = resultSQL;
 
-         
+
             connection.query("SELECT * FROM exercice WHERE idexercice =?", idexercice, function (error, resultSQL) {
                 if (error) {
                     response.status(400).send(error);
                 }
                 else {
                     console.log(exerciceList);
-                    response.render('exerciceUpdate.ejs', { "exercice": resultSQL[0],categorieList: categorieList });
+                    response.render('exerciceUpdate.ejs', { "exercice": resultSQL[0], categorieList: categorieList });
                 }
             });
+
         }
     });
-
-    
-
 
 };
 
@@ -104,7 +103,7 @@ exports.exerciceListUpdateShow = function (request, response) {
 exports.exerciceListUpdate = function (request, response) {
     let idexercice = request.params.idexercice;
     let exercice = new Exercice(request.body.nomExercice, request.body.difficulty,
-        request.body.reps, request.body.description,request.body.categorie);
+        request.body.reps, request.body.description, request.body.categorie);
 
     connection.query("UPDATE exercice set ? WHERE idexercice =?", [exercice, idexercice], function (error, resultSQL) {
         if (error) {
@@ -140,33 +139,99 @@ exports.exerciceListRemove = function (request, response) {
 // route qui envoi la liste des entrainemnts
 
 exports.entrainement = function (req, response) {
-    connection.query("select * from ( entrainement_exercice join entrainement on entrainement.identrainement = entrainement_exercice.entrainement_ID ) join " + 
-       " exercice on entrainement_exercice.exercice_ID = exercice.idexercice "   , function (error, resultSQL) {
+
+
+    connection.query("SELECT * FROM exercice ", function (error, resultSQL) {
         if (error) {
             response.status(400).send(error);
         }
         else {
-            response.status(200);
             exerciceList = resultSQL;
-            console.log(resultSQL);
-            response.render('Entrainement.ejs', { name: Test, ExerciceListTest: ExerciceListTest })
-        }   
+           
+        }
+    });
 
-        });
+    connection.query(" SELECT * FROM entrainement ", function (error, resultSQL) {
+        if (error) {
+            response.status(400).send(error);
+        }
+        else { 
+            response.status(200);
+            let resultEntrainement = {};
+            entrainementList = resultSQL;
+            entrainementList.forEach(function (entrainement, index) {
+                connection.query(" SELECT * FROM entrainement_exercice JOIN exercice ON entrainement_exercice.exercice_ID = exercice.idExercice"
+               + " JOIN entrainement ON entrainement_exercice.entrainement_ID = entrainement.idEntrainement WHERE entrainement_ID = ? "
+                    , entrainement.idEntrainement, function (error, resultSQL) {
+                        if (error) {
+                            response.status(400).send(error);
+                        }
+                        else { 
+                            
+                            resultEntrainement[entrainement.idEntrainement] = resultSQL;
+                           
+                            if (entrainementList.length -1 == index) {
+                                console.log("Avant le render" ,resultEntrainement);
+                                response.render('Entrainement.ejs', { name: Test, EntrainementList: resultEntrainement,exerciceList :exerciceList })
+                                
+                            }
+                            
+                        }
 
-    // console.log();
+                    });
 
-    // res.render('Entrainement.ejs', { name: Test, ExerciceListTest: ExerciceListTest })
+
+            });
+
+        }
+
+    });
+
+
 };
 
 
 
 // route qui va renvoyer une vue pour ajouter un entrainement
 
-exports.AddEntrainement = function (request, response) { 
+exports.AddEntrainement = function (request, response) {
 
 
     response.render('AddEntrainement.ejs', { name: Test, ExerciceListTest: ExerciceListTest })
 
+
+};
+
+exports.AddExerciceEntrainement = function (request, response) {
+
+    let exercice = request.body.exercice;
+    let entrainement = request.body.entrainement;
+    console.log( "j'ai ajouter ca :" ,entrainement,exercice);
+    connection.query("INSERT INTO entrainement_exercice (exercice_ID,entrainement_ID) VALUES (?)", [[exercice,entrainement]], function (error, resultSQL) {
+        if (error) {
+            response.status(400).send(error);
+        }
+        else {
+
+            response.status(201).redirect('/Entrainement');
+        }
+    });
+
+
+};
+
+exports.DeleteExerciceEntrainement = function (request, response) {
+    let identrainementexercice = request.params.identrainementexercice;
+    
+
+    connection.query("DELETE from entrainement_exercice WHERE identrainement_exercice =? ", identrainementexercice, function (error, resultSQL) {
+        if (error) {
+            response.status(400).send(error);
+        }
+        else {
+            console.log(exerciceList);
+            response.redirect('/Entrainement');
+        }
+    });
 
 };

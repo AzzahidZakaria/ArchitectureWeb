@@ -36,10 +36,16 @@ router.get('/exerciceList/Remove/:idexercice', Controller.exerciceListRemove);
 // renvoi la vue contenant les entrainements
 router.get('/entrainement', Controller.entrainement);
 
+//route pour ajouter un exercice à un entrainement
+router.post('/add-exercice-entrainement', Controller.AddExerciceEntrainement);
+
 // Renvoi la vue du formulaire pour encoder un entrainement
 router.get('/AddEntrainement', Controller.AddEntrainement);
 
-//
+//route pour supprimer un exercice à un entrainement
+router.get('/delete-exercice-entrainement/:identrainementexercice', Controller.DeleteExerciceEntrainement);
+
+
 
 
 

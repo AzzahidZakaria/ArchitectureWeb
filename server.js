@@ -30,6 +30,8 @@ app.use(express.urlencoded());
 //je dis que Public est le dossier contenant les fichiers statiques
 app.use(express.static("Public"));
 
+
+
 //importe l'objet router pour pouvoir rediriger vers le fichier /routes contenant toutes mes routes
 let router = require('./routes');
 //associe le fichier des routes à l'app, qui estl'instance d'express

@@ -2,7 +2,7 @@ class Entrainements {
 
     
 
-    constructor(repos,idEntrainement)
+    constructor(idEntrainement,repos)
     {
 
         this.idEntrainement = idEntrainement;
