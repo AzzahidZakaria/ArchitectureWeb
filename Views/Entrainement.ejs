@@ -11,6 +11,12 @@
 
     <body>
         <title>Ici seront listés les entrainements</title>
+        <h1>Liste des entraînements </h1> <br>
+
+        
+        <a class="btn btn-success" href="/addEntrainement" role="button"> Ajoutez un entrainement</a>
+        <br> <br>
+
 
 
         <ul>
@@ -23,6 +29,8 @@
 
                             <h5 class="card-title">
                                 Entrainement <%= key %> :
+
+                             <!-- <a class="btn btn-danger" href="/delete-entrainement/%=key[i].idEntrainement %>"> Effacez cet entrainement </a>  -->
                             </h5>
                             <h6 class="card-subtitle mb-2 text-muted">
 
@@ -92,4 +100,6 @@
 
     </body>
 
+
+    <%- include("footer") -%>
     </html>

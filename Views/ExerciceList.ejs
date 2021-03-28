@@ -1,10 +1,23 @@
 <%- include("header") -%>
 
+<form action="/Search" method="GET"> 
+    <p class="Search">
+        <input role="search" class="champ" type="Search" name="Search" placeholder="Exercice..."/>
+        <!-- <input style="color:black" class="bouton" type="submit" value="Rechercher "  /> -->
+    <button aria-label="search">
+        <img style="width: 25px; height: 25px" src="https://www.cjoint.com/doc/20_05/JEqqArgMWVG_search.png" aria-hidden="true"/>
+<span class="accessible-hidden"> Recherche </span>
+</button> </p>
+</form>
+
     <h1>Liste des Exercices</h1>
 
     
-    <a href="/addExercice" class="badge badge-success">Ajoutez un exercice</a>
-    <a href="/entrainement" class="badge badge-primary">Aller vers les entrainements</a> <br> <br>
+    
+    
+    <a class="btn btn-success" href="/addExercice" role="button"> Ajoutez un exercice</a>
+    <a class="btn btn-primary" href="/entrainement" role="button"> Vers les entrainements</a>
+    <br> <br>
     
 
     <ul>

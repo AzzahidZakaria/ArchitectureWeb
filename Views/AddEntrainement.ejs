@@ -1,38 +1,25 @@
 <%- include("header") -%>
 
 
-    <h1> Ajouter un Exercice</h1>
+    <h1> Ajouter un Entrainement</h1>
 
-    <form action="/exerciceList/New/" method="POST">
+    <form action="/addEntrainement/New/" method="POST">
 
-        <label for="nomExercice">Exercice :</label>
-
-        <input type="text" id="nomExercice" name="nomExercice" value="<%=  %>" /> <br>
+      <label for=" Vous allez ajouter un entrainement"> Vous allez ajouter un entrainement en cliquant sur le bouton en-dessous :</label> <br>
 
 
-        <input type="hidden" name="idexercice" value="<%=   %>" />
-        <label for="Difficulté de l'exercice">Difficulté de l'exercice : </label>
-        <input type="text" name="difficulty" value="<%=  %>" /> <br>
-        <label for="Difficulté de l'exercice"> Nombre de répétion : </label>
-        <input type="number" name="reps" value="<%=  %>" /> <br>
+        <input type="hidden" name="idEntrainement" value="<%=   %>" />
 
-        <label for="categorie">Catégorie :</label>
-        <select name="categorie">
-            <% for (let i=0 ; i < categorieList.length ; i++) { %>
-                <option value="<%= categorieList[i].idCategorie%>">
-                    <%= categorieList[i].categorieNom%>
-                </option>
-                <% } %>
-        </select> <br>
+        
 
-        <label for="description"> description : </label> <br>
+        <label for="temps de repos"> temps de repos : </label>
+        <input type="number" name="repos" value="<%=  %>" /> <br>
 
-        <textarea name="description" id="description" cols="30" rows="10" value="<%=   %>"></textarea> <br>
+        
 
+    
 
-
-
-        <input type="submit" value="Sauver" />
+        <input type="submit" value="Ajouter un nouvel entrainement à la liste" />
         
 
         <!-- <input type="submit" value="retour à la liste" formaction="/todo" /> -->
@@ -40,8 +27,10 @@
     </form>
 
 
-    <form action="/exerciceList" method="GET">
+    <form action="/entrainement" method="GET">
 
-        <input type="submit" value="retour à la liste" formaction="/exerciceList" />
+        <input type="submit" value="retour à la liste d'entrainements" formaction="/entrainement" />
 
     </form>
+
+    <%- include("footer") -%>
