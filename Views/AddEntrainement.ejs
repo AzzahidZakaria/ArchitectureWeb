@@ -1,36 +1,30 @@
 <%- include("header") -%>
 
+<h1>Ajouter un Entrainement</h1>
 
-    <h1> Ajouter un Entrainement</h1>
+<form action="/addEntrainement/New/" method="POST">
+  <label for=" Vous allez ajouter un entrainement">
+    Vous allez ajouter un entrainement en cliquant sur le bouton en-dessous
+    :</label
+  >
+  <br />
 
-    <form action="/addEntrainement/New/" method="POST">
+  <input type="hidden" name="idEntrainement" value="<%=   %>" />
 
-      <label for=" Vous allez ajouter un entrainement"> Vous allez ajouter un entrainement en cliquant sur le bouton en-dessous :</label> <br>
+  <label for="temps de repos"> temps de repos : </label>
+  <input type="number" name="repos" value="<%=  %>" /> <br />
 
+  <input type="submit" value="Ajouter un nouvel entrainement à la liste" />
 
-        <input type="hidden" name="idEntrainement" value="<%=   %>" />
+  <!-- <input type="submit" value="retour à la liste" formaction="/todo" /> -->
+</form>
 
-        
+<form action="/entrainement" method="GET">
+  <input
+    type="submit"
+    value="retour à la liste d'entrainements"
+    formaction="/entrainement"
+  />
+</form>
 
-        <label for="temps de repos"> temps de repos : </label>
-        <input type="number" name="repos" value="<%=  %>" /> <br>
-
-        
-
-    
-
-        <input type="submit" value="Ajouter un nouvel entrainement à la liste" />
-        
-
-        <!-- <input type="submit" value="retour à la liste" formaction="/todo" /> -->
-
-    </form>
-
-
-    <form action="/entrainement" method="GET">
-
-        <input type="submit" value="retour à la liste d'entrainements" formaction="/entrainement" />
-
-    </form>
-
-    <%- include("footer") -%>
+<%- include("footer") -%>

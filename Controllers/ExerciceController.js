@@ -7,6 +7,8 @@ let connection = require("../db");
 let exerciceList = [];
 
 
+// CE CONTROLLEUR CONTIENT TOUTES ES FONCTIONS LIES AUX EXERCICES
+
 exports.addExercice = function (req, res) {
     let categorieList = [];
   

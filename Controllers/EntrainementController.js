@@ -6,6 +6,8 @@ let entrainementList = [];
 let connection = require("../db");
 let exerciceList = [];
 
+// CE CONTROLLEUR CONTIENT TOUTES ES FONCTIONS LIES AU ENTRAINEMENT
+
 
 // route qui envoi la liste des entrainemnts
 
@@ -37,7 +39,7 @@ exports.entrainement = function (req, response) {
                 resultEntrainement[entrainement.idEntrainement] = resultSQL;
   
                 if (entrainementList.length - 1 == index) {
-                  console.log("Avant le render", resultEntrainement);
+                  // console.log("Avant le render", resultEntrainement);
                   response.render("Entrainement.ejs", {
                     name: Test,
                     EntrainementList: resultEntrainement,
@@ -73,9 +75,7 @@ exports.entrainement = function (req, response) {
   exports.AddEntrainementNew = function (request, response) {
   
   
-      let entrainement = new Entrainements(
-          request.body.repos,
-          request.body.idEntrainement);
+      let entrainement = new Entrainements(request.body.nomEntrainement,request.body.repos,false);
       
         connection.query(
           "INSERT INTO entrainement set ?",
@@ -149,3 +149,29 @@ exports.entrainement = function (req, response) {
       }
     );
   };
+
+//route 
+exports.changeStatut = function (request, response) {
+  let idEntrainement = request.params.idEntrainement
+  let statut = request.params.statut;
+  if (statut == 1) {
+    statut = 0;
+    
+  }else{
+    statut = 1;
+  }
+  console.log(statut);
+  connection.query(
+    "UPDATE entrainement set Done=? WHERE idEntrainement =?",
+    [statut, idEntrainement],
+    function (error, resultSQL) {
+      if (error) {
+        response.status(400).send(error);
+      } else {
+        
+        console.log(!statut);
+        response.status(202).redirect("/entrainement");
+      }
+    }
+  );
+};

@@ -47,7 +47,10 @@ router.get('/addEntrainement', EntrainementController.AddEntrainement);
 router.post('/addEntrainement/New/', EntrainementController.AddEntrainementNew);
 
 //route pour supprimer un entrainement donné
-router.get('/delete-entrainement/:identrainement', EntrainementController.DeleteEntrainement);
+router.get('/delete-entrainement/:idEntrainement', EntrainementController.DeleteEntrainement);
+
+//route pour changer le statut
+router.get('/change-statut/:idEntrainement/:statut', EntrainementController.changeStatut);
 
 
 

@@ -6,6 +6,12 @@ let entrainementList = [];
 let connection = require("../db");
 let exerciceList = [];
 
+
+// CE CONTROLLEUR CI CONTIENT LA PAGE D'ACCUEIL et LA FONCTIONNALITE DE RECHERCHE 
+
+
+
+//renvoi la page d'accueil
 exports.home = function (req, res) {
   res.render("home.ejs");
 };
@@ -285,7 +291,9 @@ exports.home = function (req, res) {
 //   );
 // };
 
-//pour faire une recherche dans la liste des exercices, sur base de son nom
+
+
+//pour faire une recherche dans la liste des exercices, sur base de son nom exact, renvoi une page contenant que l'exercice recherché
 
 exports.Search = function (req, res) {
   let champ = req.query.Search;

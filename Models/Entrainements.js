@@ -2,11 +2,13 @@ class Entrainements {
 
     
 
-    constructor(idEntrainement,repos)
+
+    constructor(nomEntrainement,repos,Done)
     {
 
-        this.idEntrainement = idEntrainement;
+        this.nomEntrainement = nomEntrainement;
         this.repos = repos;
+        this.Done = Done;
         
 
 

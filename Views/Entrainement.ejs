@@ -1,105 +1,95 @@
 <%- include("header") -%>
 
-    <html>
+<html>
+  <head>
+    <title>Le projet de Zakaria</title>
 
-    <head>
-        <title> Le projet de Zakaria </title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-        <link rel="stylesheet" href="/css/style.css">
+  <body>
+    <title>Ici seront listés les entrainements</title>
+    <h1>Liste des entraînements</h1>
+    <br />
 
-    </head>
+    <a class="btn btn-success" href="/addEntrainement" role="button">
+      Ajoutez un entrainement</a
+    >
+    <br />
+    <br />
 
-    <body>
-        <title>Ici seront listés les entrainements</title>
-        <h1>Liste des entraînements </h1> <br>
+    <ul>
+      <% for( const [key,value] of Object.entries(EntrainementList) ) { %>
+      <li>
+        <div class="card" style="width: 20rem">
+          <div class="card-body">
+            <h5 class="card-title">
+              Entrainement <%= key %> :
 
-        
-        <a class="btn btn-success" href="/addEntrainement" role="button"> Ajoutez un entrainement</a>
-        <br> <br>
+              <a class="btn btn-danger" href="/delete-entrainement/<%=key%>">
+                Effacez cet entrainement
+              </a>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
 
+            <ul>
+              <% for( let i=0; i < value.length; i++) { %>
+              <li>
+                <div>
+                  <p>
+                    <%= value[i].nomExercice%>
 
+                    <a
+                      class="btn btn-danger"
+                      href="/delete-exercice-entrainement/<%= value[i].identrainement_exercice %> "
+                    >
+                      Effacer
+                    </a>
+                  </p>
+                </div>
 
-        <ul>
-            <% for( const [key,value] of Object.entries(EntrainementList) ) { %>
-                <li>
+                <br />
+                <% if (value.length -1 == i) { %>
+                <form action="/add-exercice-entrainement" method="POST">
+                  <select name="exercice">
+                    <% for (let i=0 ; i < exerciceList.length ; i++) { %>
+                    <option value="<%= exerciceList[i].idexercice%>">
+                      <%= exerciceList[i].nomExercice%>
+                    </option>
+                    <% } %>
+                  </select>
+                  <input type="hidden"  name="entrainement" value="<%= key %>" />
+                  <input type="submit" value="Ajouter cet exercice" />
+                </form>
+                <div>Temps de repos : <%= value[i].repos %> secondes</div>
 
-                    <div class="card" style="width: 20rem;">
+                <% if (value[i].Done > 0) { %>
+                    <a class="btn btn-success" href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>" >
+                        Done
+                      </a>
+                      
+                    <% } else { %>
 
-                        <div class="card-body">
-
-                            <h5 class="card-title">
-                                Entrainement <%= key %> :
-
-                             <!-- <a class="btn btn-danger" href="/delete-entrainement/%=key[i].idEntrainement %>"> Effacez cet entrainement </a>  -->
-                            </h5>
-                            <h6 class="card-subtitle mb-2 text-muted">
-
-                            </h6>
-
-
-
-                           
-                                <ul>
-                                    <% for( let i=0; i < value.length; i++) { %>
-                                        <li>
-
-                                            <div>
-
-
-                                                <p>
-                                                    <%= value[i].nomExercice%>
-                                               
-                                                <a class="btn btn-danger" href="/delete-exercice-entrainement/<%= value[i].identrainement_exercice %> "> Effacer
-                                                </a>
-                                            </p>
-                                            </div>
-
-                                            <br>
-                                            <% if (value.length -1 == i) { %>
-                                                
-                                            
-                                            <div >
-                                                Temps de repos  : <%= value[i].repos %> secondes
-                                               
-                                            </div>
-                                            <% } %>
-                                        </li>
-                                    
-                                        <% } %>
-                                </ul>
-                            
-
-                            <form action="/add-exercice-entrainement" method="POST">
-                                <select name="exercice">
-                                    <% for (let i=0 ; i < exerciceList.length ; i++) { %>
-                                        <option value="<%= exerciceList[i].idexercice%>">
-                                            <%= exerciceList[i].nomExercice%>
-                                        </option>
-                                        <% } %>
-                                </select> 
-                                <input type="hidden" name="entrainement" value="<%= key  %>" />
-                                <input type="submit" value="Ajouter cet exercice">
-                            </form>
-
-
-                        </div>
-                    </div>
-
-                    <br>
-
-
-
-
-
-                </li>
-
-
+                <a class="btn btn-warning" href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>" >
+                    Not Done
+                  </a>
                 <% } %>
-        </ul>
+                <% } %>
+              </li>
 
+             
 
-    </body>
+              <% } %>
+            </ul>
+          </div>
+        </div>
 
+        <br />
+      </li>
 
-    <%- include("footer") -%>
-    </html>
+      <% } %>
+    </ul>
+  </body>
+
+  <%- include("footer") -%>
+</html>
