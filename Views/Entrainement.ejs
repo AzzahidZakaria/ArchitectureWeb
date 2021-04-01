@@ -50,36 +50,40 @@
 
                 <br />
                 <% if (value.length -1 == i) { %>
-                <form action="/add-exercice-entrainement" method="POST">
-                  <select name="exercice">
-                    <% for (let i=0 ; i < exerciceList.length ; i++) { %>
-                    <option value="<%= exerciceList[i].idexercice%>">
-                      <%= exerciceList[i].nomExercice%>
-                    </option>
-                    <% } %>
-                  </select>
-                  <input type="hidden"  name="entrainement" value="<%= key %>" />
-                  <input type="submit" value="Ajouter cet exercice" />
-                </form>
+                
                 <div>Temps de repos : <%= value[i].repos %> secondes</div>
 
                 <% if (value[i].Done > 0) { %>
-                    <a class="btn btn-success" href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>" >
-                        Done
-                      </a>
-                      
-                    <% } else { %>
+                <a
+                  class="btn btn-success"
+                  href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>"
+                >
+                  Done
+                </a>
 
-                <a class="btn btn-warning" href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>" >
-                    Not Done
-                  </a>
-                <% } %>
-                <% } %>
+                <% } else { %>
+
+                <a
+                  class="btn btn-warning"
+                  href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>"
+                >
+                  Not Done
+                </a>
+                <% } %> <% } %>
               </li>
 
-             
-
               <% } %>
+              <form action="/add-exercice-entrainement" method="POST">
+                <select name="exercice">
+                  <% for (let i=0 ; i < exerciceList.length ; i++) { %>
+                  <option value="<%= exerciceList[i].idexercice%>">
+                    <%= exerciceList[i].nomExercice%>
+                  </option>
+                  <% } %>
+                </select>
+                <input type="hidden" name="entrainement" value="<%= key %>" />
+                <input type="submit" value="Ajouter cet exercice" />
+              </form>
             </ul>
           </div>
         </div>
