@@ -31,6 +31,10 @@ app.use(express.urlencoded());
 app.use(express.static("Public"));
 
 
+// de manière à envoyer du json et qu'il soit correctement interprété
+app.use(express.json());
+
+
 
 //importe l'objet router pour pouvoir rediriger vers le fichier /routes contenant toutes mes routes
 let router = require('./routes');

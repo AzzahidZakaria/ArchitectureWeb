@@ -75,7 +75,7 @@ exports.entrainement = function (req, response) {
   exports.AddEntrainementNew = function (request, response) {
   
   
-      let entrainement = new Entrainements(request.body.nomEntrainement,request.body.repos,false);
+      let entrainement = new Entrainements(request.body.repos,false);
       
         connection.query(
           "INSERT INTO entrainement set ?",
@@ -84,6 +84,7 @@ exports.entrainement = function (req, response) {
             if (error) {
               response.status(400).send(error);
             } else {
+              console.log(entrainement);
               response.status(201).redirect("/entrainement");
             }
           }
@@ -127,6 +128,7 @@ exports.entrainement = function (req, response) {
         if (error) {
           response.status(400).send(error);
         } else {
+          console.log(entrainement,exercice);
           response.status(201).redirect("/Entrainement");
         }
       }

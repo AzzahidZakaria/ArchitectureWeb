@@ -9,22 +9,8 @@ let exerciceList = [];
 
 // CE CONTROLLEUR CONTIENT TOUTES ES FONCTIONS LIES AUX EXERCICES
 
-exports.addExercice = function (req, res) {
-    let categorieList = [];
-  
-    connection.query("select * from categorie", function (error, resultSQL) {
-      if (error) {
-        res.status(400).send(error);
-      } else {
-        res.status(200);
-        console.log(resultSQL);
-        categorieList = resultSQL;
-  
-        res.render("AddExercice.ejs", { categorieList: categorieList });
-      }
-    });
-  };
-  
+
+  // 1
   exports.exerciceList = function (request, response) {
     connection.query(
       "select * from exercice join categorie on exercice.categorie_ID = categorie.idCategorie ORDER BY idexercice ",
@@ -40,6 +26,27 @@ exports.addExercice = function (req, res) {
       }
     );
   };
+
+
+  //2
+  exports.addExercice = function (req, res) {
+    let categorieList = [];
+  
+    connection.query("select * from categorie", function (error, resultSQL) {
+      if (error) {
+        res.status(400).send(error);
+      } else {
+        res.status(200);
+        console.log(resultSQL);
+        categorieList = resultSQL;
+  
+        res.render("AddExercice.ejs", { categorieList: categorieList });
+      }
+    });
+  };
+
+
+  //3
   
   exports.exerciceListNew = function (request, response) {
     let exercice = new Exercice(
@@ -63,7 +70,7 @@ exports.addExercice = function (req, res) {
     );
   };
   
-  // Montrer la liste avec les champs qui sont remplis de celui
+  // 4. Montrer la liste avec les champs qui sont remplis de celui
   
   exports.exerciceListUpdateShow = function (request, response) {
     let idexercice = request.params.idexercice;
@@ -95,7 +102,7 @@ exports.addExercice = function (req, res) {
     });
   };
   
-  // Appuyer sur sauver pour UPDATE et modifier un champ de la liste
+  // 5. Appuyer sur sauver pour UPDATE et modifier un champ de la liste
   
   exports.exerciceListUpdate = function (request, response) {
     let idexercice = request.params.idexercice;
@@ -121,7 +128,7 @@ exports.addExercice = function (req, res) {
     );
   };
   
-  //Supprimer un élément
+  // 6. Supprimer un élément
   
   exports.exerciceListRemove = function (request, response) {
     let idexercice = request.params.idexercice;
