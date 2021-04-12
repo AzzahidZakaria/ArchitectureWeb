@@ -18,7 +18,9 @@ fichier html ou je peux mettre du balisage ou ce sera du JS
 <body>
 
 
-    <section class="accueil" id="accueil">
+   
+
+  
 
         <div class="container acc1">
           
@@ -26,30 +28,79 @@ fichier html ou je peux mettre du balisage ou ce sera du JS
               <div class="col-xl-12">
                 
                 
-                <h3 style="text-align: center; " class="display-3">Bienvenu sur la Workout App !</h3>
+                <h2 style="text-align: center; " class="display-2">Bienvenue sur la Workout App !</h2>
     
-                <p style="text-align: center;"> Utilisez cette Application pour crééer vos exercices personnalisés et ensuite, rassemblez les dans des entrainements !</strong>
+                <p style="text-align: center;" > Utilisez cette Application pour crééer vos exercices personnalisés et ensuite, rassemblez les dans des entrainements !</strong>
                 </p>
             </div>
           </div>
         </div>
 
+        <img src="/Image/test.jpg"  class="rounded mx-auto d-block" alt="...">
+
+
+        <section class="about" id="about">
+          <div class="container">
+          <div class="row">
+            
+               <div class="col-lg-5">
+                <img class="imagehome" src="/Image/sport4.jpg">
+              </div>
         
-        <img src="/Image/test.jpg" >
-    
-        <center><a type="button" class="btn btn-primary" href="#about">En savoir plus</a></center>
-    
-      </section>
+            <div class="col-lg-6">
+              <h1 class="title">A propos ?</h1>
+        
+                <p> Workout App est une application développé par Zakaria corporation et qui a pour but de fournir une solution simple aux sportifs connectés.
+                </p>
+        
+                <br>
+        
+                <p>Elle a été développé grâce à des technologies de point du monde du web. NodeJs pour la partie serveur, le framework express qui nous a permis de créer des vues et tout ceci structuré avec le design pattern MVC.</p>
+        
+                <br>
+        
+                <p>  Partant d'une connaissance de l'informatique proche de Zéro, j'ai pu développer cette application web grâce au cours d'Architecture web, des nombreuses ressources se trouvant sur internet ainsi que grâce à des consultations et des questions auprès de mes professeurs ou de professionels du secteur. </p>
+            </div>
+        
+          </div>
+          </div>
+          </section>
 
-<% for(let i = 0 ; i < 5 ; i++)  { %>
-    <p>TEST</p>
-<% } %>
+
+          <section class="valeur" id="valeur">
+            <div class="container">
+            <div class="row">
+                              
+              <div class="col-lg-6">
+                <h1 class="title">Fonctionnalités</h1>
+          
+                
+                <h5> Vous pouvez créer des exercices personnalisés. </h5>
+                <a type="button" class="btn btn-info" href="/addExercice">Ajouter un exercice</a> <br> <br>
+                <h5> La liste des exercices s'affichera sans aucun soucis.</h5>
+                <a type="button" class="btn btn-info" href="/exerciceList"> Liste des exercices</a> <br> <br>
+                <h5>Vous pourrez créer un entrainement autant de fois que nécessaire !</h5>
+                <a type="button" class="btn btn-info" href="/addEntrainement"> Créer un entrainement</a> <br> <br>
+                <h5> Vous pourrez ensuite utiliser les exercices que vous aurez créer, pour créer des entrainements personnalisés en précisant s'il a été réalisé ou non.</h5>
+                <a type="button" class="btn btn-info" href="/entrainement">Personnaliser un entrainement</a> <br> <br>
+              </div>
+          
+              <div class="col-lg-5">
+                <img class="imagehome" src="/Image/sport5.jpg"> 
+              </div>
+            </div>
+            </div>
+            </section>
+        
+      </div>
+      
 
 
-<a href="/addExercice"> Lien vers la page ou l'on pourra ajouter un exo</a> <br>
 
-<a href="/exerciceList"> Lien ou se trouvera la liste des exercices </a> <br>
-<a href="/entrainement"> Lien on l'on pourra créer des entrainements </a> <br>
+
+
+
+
 
 </body>
 <%- include("footer") -%>
