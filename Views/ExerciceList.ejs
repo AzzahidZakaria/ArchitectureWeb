@@ -1,75 +1,80 @@
 <%- include("header") -%>
 
-<form action="/Search" method="GET"> 
-    <p class="Search">
-        <input role="search" class="champ" type="Search" name="Search" placeholder="Exercice..."/>
-        <!-- <input style="color:black" class="bouton" type="submit" value="Rechercher "  /> -->
+<form action="/Search" method="GET">
+  <p class="Search">
+    <input
+      role="search"
+      class="champ"
+      type="Search"
+      name="Search"
+      placeholder="Exercice..."
+    />
+    <!-- <input style="color:black" class="bouton" type="submit" value="Rechercher "  /> -->
     <button aria-label="search">
-        <img style="width: 25px; height: 25px" src="https://www.cjoint.com/doc/20_05/JEqqArgMWVG_search.png" aria-hidden="true"/>
-<span class="accessible-hidden"> Recherche </span>
-</button> </p>
+      <img
+        style="width: 25px; height: 25px"
+        src="https://www.cjoint.com/doc/20_05/JEqqArgMWVG_search.png"
+        aria-hidden="true"
+      />
+      <span class="accessible-hidden"> Recherche </span>
+    </button>
+  </p>
 </form>
 
-    <h1>Liste des Exercices</h1>
+<h1>Liste des Exercices</h1>
 
-    
-    
-    
-    <a class="btn btn-success" href="/addExercice" role="button"> Ajoutez un exercice</a>
-    <a class="btn btn-primary" href="/entrainement" role="button"> Vers les entrainements</a>
-    <br> <br>
-    
+<a class="btn btn-success" href="/addExercice" role="button">
+  Ajoutez un exercice</a
+>
+<a class="btn btn-primary" href="/entrainement" role="button">
+  Vers les entrainements</a
+>
+<br />
+<br />
 
-    <ul>
-        <% for( let i=0; i < exercices.length; i++) { %>
-            <li>
+<ul>
+  <% for( let i=0; i < exercices.length; i++) { %>
+  <li>
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title"><%= exercices[i].nomExercice%></h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <%= exercices[i].categorieNom%>
+        </h6>
 
-                <div class="card" style="width: 18rem;">
+        <p class="card-text">Difficulté : <%= exercices[i].difficulty%></p>
 
-                    <div class="card-body">
-                        
-                        <h5 class="card-title">
-                            <%= exercices[i].nomExercice%>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <%= exercices[i].categorieNom%>
-                        </h6>
+        <div class="card-body">
+          <p class="card-text">
+            Description : <br />
+            <%= exercices[i].description%>
+          </p>
+        </div>
 
-                        <p class="card-text">
-                           Difficulté :  <%= exercices[i].difficulty%>
-                        </p>
-                        
-                        <div class="card-body">
-                            
-                            <p class="card-text"> Description : <br> <%= exercices[i].description%> </p>
-                            
-                          </div>
+        <div class="card-footer text-muted">
+          Nombre de répétitons : <%= exercices[i].reps%>
+        </div>
+        <a
+          class="btn btn-warning"
+          href="/exerciceList/Show/<%= exercices[i].idexercice %> "
+        >
+          Modifier
+        </a>
+        <a
+          class="btn btn-danger"
+          href="/exerciceList/Remove/<%= exercices[i].idexercice %> "
+        >
+          Effacer
+        </a>
+      </div>
+    </div>
 
-                        <div class="card-footer text-muted">
-                           Nombre de répétitons :  <%= exercices[i].reps%>
-                          </div>
-                        <a class="btn btn-warning" href="/exerciceList/Show/<%= exercices[i].idexercice %> "> Modifier
-                        </a>
-                        <a class="btn btn-danger" href="/exerciceList/Remove/<%= exercices[i].idexercice %> "> Effacer
-                        </a>
-                    </div>
-                </div>
+    <br />
+  </li>
 
-                <br>
-                
+  <% } %>
+</ul>
 
+<br />
 
-                                    
-
-            </li>
-
-
-            <% } %>
-    </ul>
-
-    <br>
-
-
-
-
-    <%- include("footer") -%>
+<%- include("footer") -%>

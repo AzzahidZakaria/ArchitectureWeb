@@ -21,16 +21,17 @@
     <ul>
       <% for( const [key,value] of Object.entries(EntrainementList) ) { %>
       <li>
-        <div class="card" style="width: 20rem">
+        <div class="card justify-content-center " style="width: 20rem">
           <div class="card-body">
-            <h5 class="card-title">
-              Entrainement <%= key %> :
-
-              <a class="btn btn-danger" href="/delete-entrainement/<%=key%>">
+            <h5 class="card-header">Entrainement <%= key %> : 
+             <br> <br>
+            <a class="btn btn-danger" href="/delete-entrainement/<%=key%>"> 
                 Effacez cet entrainement
-              </a>
+              </a></h5>
+            <h5 class="card-title">
+              
             </h5>
-            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <h6 class="card-subtitle mb-2 text-muted"> Liste des exercices de l'entraînement :</h6> <br>
 
             <ul>
               <% for( let i=0; i < value.length; i++) { %>
@@ -51,14 +52,14 @@
                 <br />
                 <% if (value.length -1 == i) { %>
                 
-                <div>Temps de repos : <%= value[i].repos %> secondes</div>
+                <div>Temps de repos : <%= value[i].repos %> secondes</div> </br>
 
                 <% if (value[i].Done > 0) { %>
-                <a
+                <a 
                   class="btn btn-success"
                   href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>"
                 >
-                  Done
+                  Entrainement réalisé
                 </a>
 
                 <% } else { %>
@@ -67,12 +68,12 @@
                   class="btn btn-warning"
                   href="/change-statut/<%= value[i].idEntrainement %>/<%= value[i].Done %>"
                 >
-                  Not Done
-                </a>
-                <% } %> <% } %>
+                  Entrainement non réalisé
+                </a> 
+                <% } %> <% } %> 
               </li>
 
-              <% } %>
+              <% } %> </br>
               <form action="/add-exercice-entrainement" method="POST">
                 <select name="exercice">
                   <% for (let i=0 ; i < exerciceList.length ; i++) { %>

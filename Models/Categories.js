@@ -12,4 +12,4 @@ class Categories {
 };
 
 
-module.exports = Entrainements;
+module.exports = Categories;

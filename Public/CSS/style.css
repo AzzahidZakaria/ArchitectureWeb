@@ -1,3 +1,11 @@
+body {
+  color:black;
+  
+  background-image:url("/Image/Fond-site-web.jpg");
+  background-size: cover;
+  position: relative;
+  }
+
 .imagehome {
     margin-top: 50px;
     width: 400px;
@@ -14,7 +22,50 @@
   font-size: 16px;
 }
 
-.funct {
+footer {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background-color: #0af;
+  
+  font-size: 15px;
+  text-align: center;
+  }
 
 
-}
+
+@media (min-width:800px) {
+  main {
+      width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+  } 
+
+  /* body {
+      padding-left: 10em;
+  } */
+
+  /* nav {
+      left: 0;
+  } */
+
+  /* #menuButton {
+      display: none;
+  }
+
+  section.highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 1em;
+  }
+
+  .feature {
+      grid-column: span 1;
+  }
+
+  #overlay.onscreen {
+      left: -100%;
+  }
+} } 
+*/ 
+} 

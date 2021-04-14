@@ -72,6 +72,8 @@ exports.entrainement = function (req, response) {
     });
   };
   
+  // route lorsque j'appui sur sauver
+
   exports.AddEntrainementNew = function (request, response) {
   
   
@@ -115,7 +117,7 @@ exports.entrainement = function (req, response) {
     };
   
   
-  
+  //route pour envoyer un entrainement exercice au sein d'un entrainement
   
   exports.AddExerciceEntrainement = function (request, response) {
     let exercice = request.body.exercice;
@@ -134,6 +136,8 @@ exports.entrainement = function (req, response) {
       }
     );
   };
+
+  //effacer un entrainement exercice donné
   
   exports.DeleteExerciceEntrainement = function (request, response) {
     let identrainementexercice = request.params.identrainementexercice;
@@ -152,7 +156,7 @@ exports.entrainement = function (req, response) {
     );
   };
 
-//route 
+//route pour le bouton qui affiche le statut
 exports.changeStatut = function (request, response) {
   let idEntrainement = request.params.idEntrainement
   let statut = request.params.statut;

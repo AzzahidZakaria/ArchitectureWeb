@@ -1,49 +1,48 @@
 <%- include("header") -%>
 
+<h1>Ajouter un Exercice</h1>
 
-    <h1> Ajouter un Exercice</h1>
+<form action="/exerciceList/New/" method="POST">
+  <label for="nomExercice">Exercice :</label>
 
-    <form action="/exerciceList/New/" method="POST">
+  <input type="text" id="nomExercice" name="nomExercice" value="<%=  %>" />
+  <br />
 
-        <label for="nomExercice">Exercice :</label>
+  <input type="hidden" name="idexercice" value="<%=   %>" />
+  <label for="Difficulté de l'exercice">Difficulté de l'exercice : </label>
+  <input type="text" name="difficulty" value="<%=  %>" /> <br />
+  <label for="Difficulté de l'exercice"> Nombre de répétion : </label>
+  <input type="number" name="reps" value="<%=  %>" /> <br />
 
-        <input type="text" id="nomExercice" name="nomExercice" value="<%=  %>" /> <br>
+  <label for="categorie">Catégorie :</label>
+  <select name="categorie">
+    <% for (let i=0 ; i < categorieList.length ; i++) { %>
+    <option value="<%= categorieList[i].idCategorie%>">
+      <%= categorieList[i].categorieNom%>
+    </option>
+    <% } %>
+  </select>
+  <br />
 
+  <label for="description"> Description : </label> <br />
 
-        <input type="hidden" name="idexercice" value="<%=   %>" />
-        <label for="Difficulté de l'exercice">Difficulté de l'exercice : </label>
-        <input type="text" name="difficulty" value="<%=  %>" /> <br>
-        <label for="Difficulté de l'exercice"> Nombre de répétion : </label>
-        <input type="number" name="reps" value="<%=  %>" /> <br>
+  <textarea
+    name="description"
+    id="description"
+    cols="30"
+    rows="10"
+    value="<%=   %>"
+  ></textarea>
+  <br />
 
-        <label for="categorie">Catégorie :</label>
-        <select name="categorie">
-            <% for (let i=0 ; i < categorieList.length ; i++) { %>
-                <option value="<%= categorieList[i].idCategorie%>">
-                    <%= categorieList[i].categorieNom%>
-                </option>
-                <% } %>
-        </select> <br>
+  <input type="submit" value="Sauver" />
 
-        <label for="description"> description : </label> <br>
+  <!-- <input type="submit" value="retour à la liste" formaction="/todo" /> -->
+</form>
 
-        <textarea name="description" id="description" cols="30" rows="10" value="<%=   %>"></textarea> <br>
+<form action="/exerciceList" method="GET">
+  <input type="submit" value="retour à la liste" formaction="/exerciceList" />
+</form>
+<br />
 
-
-
-
-        <input type="submit" value="Sauver" />
-        
-
-        <!-- <input type="submit" value="retour à la liste" formaction="/todo" /> -->
-
-    </form>
-
-
-    <form action="/exerciceList" method="GET">
-
-        <input type="submit" value="retour à la liste" formaction="/exerciceList" />
-
-    </form>
-
-    <%- include("footer") -%>
+<%- include("footer") -%>
