@@ -23,7 +23,8 @@ exports.exerciceList = function (request, response) {
 };
 
 // 
-// ne  doit aps être effacé car il renvoit les catégories
+// ne  doit aps être effacé car il renvoit les catégories ?
+// vérifier son utilité avec la fonctionnalité sur VueJS
 exports.addExercice = function (req, res) {
   let categorieList = [];
 
@@ -112,7 +113,7 @@ exports.exerciceListUpdate = function (request, response) {
     request.body.difficulty,
     request.body.reps,
     request.body.description,
-    request.body.categorie
+    request.body.categorie_ID
   );
 
   connection.query(

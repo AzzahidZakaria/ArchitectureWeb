@@ -4,13 +4,26 @@
 
 <form action="/exerciceList/New/" method="POST">
   <label for="nomExercice">Exercice :</label>
-
   <input type="text" id="nomExercice" name="nomExercice" value="<%=  %>" />
   <br />
 
   <input type="hidden" name="idexercice" value="<%=   %>" />
-  <label for="Difficulté de l'exercice">Difficulté de l'exercice : </label>
-  <input type="text" name="difficulty" value="<%=  %>" /> <br />
+
+  <!-- <label for="Difficulté de l'exercice">Difficulté de l'exercice : </label>
+  <input type="text" name="difficulty" value="<%=  %>" /> <br /> -->
+
+  <label for="pet-select">Difficulté de l'exercice :</label>
+
+<select type="text" name="difficulty" value="<%=  %>" >
+    
+    
+    <option value="facile">Facile</option>
+    <option value="moyen">Moyen</option>
+    <option value="difficile">Difficile</option>
+    <option value="TrèsDifficile">Très Difficile</option>
+    
+</select> <br />
+
   <label for="Difficulté de l'exercice"> Nombre de répétion : </label>
   <input type="number" name="reps" value="<%=  %>" /> <br />
 
@@ -25,7 +38,6 @@
   <br />
 
   <label for="description"> Description : </label> <br />
-
   <textarea
     name="description"
     id="description"
