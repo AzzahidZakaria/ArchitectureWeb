@@ -45,33 +45,21 @@ router.get(
 
 //// ************* EXERCICE APIs ***************////
 
-// page qui contient la liste de tous les exercices / ok
-router.get("/api/exerciceList", ExerciceControllerApi.exerciceList);
+    // page qui contient la liste de tous les exercices / ok
+    router.get("/api/exerciceList", ExerciceControllerApi.exerciceList);
 
-//Vue qui contient le formulaire pour ajouter un exercice
-router.get("/api/addExercice", ExerciceControllerApi.addExercice);
+    //Vue qui contient le formulaire pour ajouter un exercice
+    //peut être utilisé pour récupérer les catégories plus tard
+    // router.get("/api/addExercice", ExerciceControllerApi.addExercice);
 
-// lorsqu'on appuie sur le bouton sauver pour envoyer le contenu du formulaire / ok
-router.post("/api/exerciceList/New/", ExerciceControllerApi.exerciceListNew);
+    // lorsqu'on appuie sur le bouton sauver pour envoyer le contenu du formulaire / ok
+    router.post("/api/exerciceList/New/", ExerciceControllerApi.exerciceListNew);
 
-//route qui affiche les informations de la vue  d'un exo lrosqu'on appui sur modifier / ok
-// me permet de récupérer les infos d'un exercice en particulier
-router.get(
-  "/api/exerciceList/Show/:idexercice",
-  ExerciceControllerApi.exerciceListUpdateShow
-);
+    //lorsqu'on appui sur sauver après avoir modifier et renvoi sur la liste / ok
+    router.put("/api/exerciceList/Update/:idexercice",ExerciceControllerApi.exerciceListUpdate);
 
-//lorsqu'on appui sur sauver après avoir modifier et renvoi sur la liste / ok
-router.put(
-  "/api/exerciceList/Update/:idexercice",
-  ExerciceControllerApi.exerciceListUpdate
-);
-
-//lorsqu'on appui sur supprimer un exercice / ok
-router.delete(
-  "/api/exerciceList/Remove/:idexercice",
-  ExerciceControllerApi.exerciceListRemove
-);
+    //lorsqu'on appui sur supprimer un exercice / ok
+    router.delete("/api/exerciceList/Remove/:idexercice",ExerciceControllerApi.exerciceListRemove);
 
 //LES ENTRAINEMENTS
 
@@ -98,29 +86,21 @@ router.get(
 
 //// ******** ENTRAINEMENT API ********* ///
 
-// renvoi la vue contenant les entrainements / ok
-router.get("/api/entrainement", EntrainementControllerApi.entrainement);
+    // renvoi la vue contenant les entrainements / ok
+    router.get("/api/entrainement", EntrainementControllerApi.entrainement);
 
-// Renvoi la vue du formulaire pour encoder un entrainement
-// router.get('/api/addEntrainement', EntrainementControllerApi.AddEntrainement);
+    // Renvoi la vue du formulaire pour encoder un entrainement
+    // router.get('/api/addEntrainement', EntrainementControllerApi.AddEntrainement);
 
-//Quand j'appuie sur le bouton sauver l'entrainement / ok
-router.post(
-  "/api/addEntrainement/New/",
-  EntrainementControllerApi.AddEntrainementNew
-);
+    //Quand j'appuie sur le bouton sauver l'entrainement / ok
+    router.post("/api/addEntrainement/New/",EntrainementControllerApi.AddEntrainementNew);
 
-//route pour supprimer un entrainement donné / ok
-router.delete(
-  "/api/delete-entrainement/:idEntrainement",
-  EntrainementControllerApi.DeleteEntrainement
-);
+    //route pour supprimer un entrainement donné / ok
+    router.delete("/api/delete-entrainement/:idEntrainement",EntrainementControllerApi.DeleteEntrainement);
 
-//route pour changer le statut / ok
-router.put(
-  "/api/change-statut/:idEntrainement/:statut",
-  EntrainementControllerApi.changeStatut
-);
+    //route pour changer le statut / ok
+    // pas utilisé sur vueJS pour le moment
+    // router.put("/api/change-statut/:idEntrainement/:statut",EntrainementControllerApi.changeStatut);
 
 //LES EXERCICES DANS LES ENTRAINEMENTS
 
@@ -138,17 +118,11 @@ router.get(
 
 // *********** API LES EXERCICES DANS LES ENTRAINEMENTS ************ //
 
-//route pour ajouter un exercice à un entrainement / ok
-router.post(
-  "/api/add-exercice-entrainement",
-  EntrainementControllerApi.AddExerciceEntrainement
-);
+    //route pour ajouter un exercice à un entrainement / ok
+    router.post("/api/add-exercice-entrainement",EntrainementControllerApi.AddExerciceEntrainement);
 
-//route pour supprimer un exercice à un entrainement / ok
-router.delete(
-  "/api/delete-exercice-entrainement/:identrainementexercice",
-  EntrainementControllerApi.DeleteExerciceEntrainement
-);
+    //route pour supprimer un exercice à un entrainement / ok
+    router.delete("/api/delete-exercice-entrainement/:identrainementexercice",EntrainementControllerApi.DeleteExerciceEntrainement);
 
 //RECHERCHE
 

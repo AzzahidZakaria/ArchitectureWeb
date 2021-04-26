@@ -11,13 +11,6 @@ let exerciceList = [];
 // route qui envoi la liste des entrainemnts / ok
 
 exports.entrainement = function (req, response) {
-    connection.query("SELECT * FROM exercice ", function (error, resultSQL) {
-      if (error) {
-        response.status(400).json({'error':error});
-      } else {
-        exerciceList = resultSQL;
-      }
-    });
   
     connection.query(" SELECT * FROM entrainement ", function (error, resultSQL) {
       if (error) {
@@ -38,7 +31,7 @@ exports.entrainement = function (req, response) {
                 resultEntrainement[entrainement.idEntrainement] = resultSQL;
   
                 if (entrainementList.length - 1 == index) {
-                  // console.log("Avant le render", resultEntrainement);
+                   console.log("Avant le render", resultEntrainement);
                   response.status(201).json(resultEntrainement);
                 }
               }
