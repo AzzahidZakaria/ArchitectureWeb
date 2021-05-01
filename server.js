@@ -6,12 +6,12 @@ let app = express();
 
 let connection = require("./db.js");
 
+//Setting Middleware
 app.use(express.urlencoded());
 
 // Send message for default URL
 //  app.get('/', (req, res) => res.send('Hello World !'));
 
-//Setting Middleware
 //je dis que Public est le dossier contenant les fichiers statiques
 app.use(express.static("Public"));
 

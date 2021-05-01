@@ -60,34 +60,6 @@ exports.exerciceListNew = function (request, response) {
   );
 };
 
-// Montrer la liste avec les champs qui sont remplis de l'exercice choisi
-
-exports.exerciceListUpdateShow = function (request, response) {
-  let idexercice = request.params.idexercice;
-
-  connection.query("select * from categorie", function (error, resultSQL) {
-    if (error) {
-      response.status(400).json({ error: error });
-    } else {
-      response.status(200);
-      console.log(resultSQL);
-      categorieList = resultSQL;
-
-      connection.query(
-        "SELECT * FROM exercice WHERE idexercice =?",
-        idexercice,
-        function (error, resultSQL) {
-          if (error) {
-            response.status(400).json({ error: error });
-          } else {
-            console.log(exerciceList);
-            response.json(resultSQL);
-          }
-        }
-      );
-    }
-  });
-};
 
 // Appuyer sur sauver pour UPDATE et modifier un champ de la liste
 

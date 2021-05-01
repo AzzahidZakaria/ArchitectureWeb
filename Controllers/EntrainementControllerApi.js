@@ -126,28 +126,3 @@ exports.entrainement = function (req, response) {
     );
   };
 
-//route qui permet de modifier la valeur dans la  db pour afficher le statut
-exports.changeStatut = function (request, response) {
-  let idEntrainement = request.params.idEntrainement
-  let statut = request.params.statut;
-  if (statut == 1) {
-    statut = 0;
-    
-  }else{
-    statut = 1;
-  }
-  console.log(statut);
-  connection.query(
-    "UPDATE entrainement set Done=? WHERE idEntrainement =?",
-    [statut, idEntrainement],
-    function (error, resultSQL) {
-      if (error) {
-        response.status(400).json({'error':error});
-      } else {
-        
-        console.log(!statut);
-        response.status(201).json([{"message":"success"}]);
-      }
-    }
-  );
-};
