@@ -21,10 +21,10 @@ exports.home = function (req, res) {
 //pour faire une recherche dans la liste des exercices, sur base de son nom exact, renvoi une page contenant que l'exercice recherché
 
 exports.Search = function (req, res) {
-  let champ = req.query.Search;
+  let search = req.query.Search;
   connection.query(
     "select * from exercice join categorie on exercice.categorie_ID = categorie.idCategorie where nomExercice = ? ",
-    champ,
+    search,
     function (error, resultSQL) {
       exerciceList = resultSQL;
       console.log(resultSQL);
