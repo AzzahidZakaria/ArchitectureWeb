@@ -5,7 +5,9 @@ let entrainementList = [];
 let connection = require("../db");
 let exerciceList = [];
 
-// CE CONTROLLEUR CONTIENT TOUTES ES FONCTIONS LIES AUX EXERCICES
+// CE CONTROLLEUR CONTIENT TOUTES LES FONCTIONS LIES AUX EXERCICES
+
+// renvoi la liste des exercices
 
 exports.exerciceList = function (request, response) {
   connection.query(
@@ -22,23 +24,6 @@ exports.exerciceList = function (request, response) {
   );
 };
 
-// 
-// ne  doit aps être effacé car il renvoit les catégories ?
-// vérifier son utilité avec la fonctionnalité sur VueJS
-exports.addExercice = function (req, res) {
-  let categorieList = [];
-
-  connection.query("select * from categorie", function (error, resultSQL) {
-    if (error) {
-      res.status(400).json({ error: error });
-    } else {
-      console.log(resultSQL);
-      categorieList = resultSQL;
-
-      res.status(200).json(resultSQL);
-    }
-  });
-};
 
 // attention ici, j'envoi au body categorie, et non idcategorie et categorienom !!!
 // voici un requête postman correct :

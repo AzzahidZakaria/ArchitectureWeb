@@ -42,24 +42,6 @@ exports.entrainement = function (req, response) {
     });
   };
   
-  // route qui va renvoyer une vue pour ajouter un entrainement
-  // renvoi un formulaire donc inutile
-  
-  // exports.AddEntrainement = function (req, res) {
-  //   let categorieList = [];
-  
-  //   connection.query("select * from categorie", function (error, resultSQL) {
-  //     if (error) {
-  //       res.status(400).send(error);
-  //     } else {
-  //       res.status(200);
-  //       console.log(resultSQL);
-  //       categorieList = resultSQL;
-  
-  //       res.render("AddEntrainement.ejs", { categorieList: categorieList });
-  //     }
-  //   });
-  // };
   
 
   // ok, requete post man correct :
@@ -144,7 +126,7 @@ exports.entrainement = function (req, response) {
     );
   };
 
-//route 
+//route qui permet de modifier la valeur dans la  db pour afficher le statut
 exports.changeStatut = function (request, response) {
   let idEntrainement = request.params.idEntrainement
   let statut = request.params.statut;
