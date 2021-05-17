@@ -10,7 +10,7 @@ let exerciceList = [];
 // CE CONTROLLEUR CONTIENT TOUTES ES FONCTIONS LIES AUX EXERCICES
 
 
-  // 1
+  // 1 afficher la liste des exercices
   exports.exerciceList = function (request, response) {
     connection.query(
       "select * from exercice join categorie on exercice.categorie_ID = categorie.idCategorie ORDER BY idexercice ",
@@ -28,7 +28,7 @@ let exerciceList = [];
   };
 
 
-  //2
+  //2 affiche la vue pour encoder un exercice
   exports.addExercice = function (req, res) {
     let categorieList = [];
   
@@ -46,7 +46,7 @@ let exerciceList = [];
   };
 
 
-  //3
+  //3 envoi les informations que j'ai encodé dans la base de données
   
   exports.exerciceListNew = function (request, response) {
     let exercice = new Exercice(
